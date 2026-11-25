@@ -2,9 +2,10 @@
 #include <optional>
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode({200, 200}), "Game Template");
+    const sf::Vector2f windowSize = {200.f, 200.f};
+    sf::RenderWindow window(sf::VideoMode(static_cast<sf::Vector2u>(windowSize)), "Game Template");
 
-    const sf::Time timePerTick = sf::seconds(1.f / 60.f);
+    const sf::Time dt = sf::seconds(1.f / 60.f);
 
     sf::Clock clock;
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
@@ -13,12 +14,14 @@ int main() {
         sf::Time elapsedTime = clock.restart();
         timeSinceLastUpdate += elapsedTime;
 
-        while (timeSinceLastUpdate >= timePerTick) {
-            timeSinceLastUpdate -= timePerTick;
+        while (timeSinceLastUpdate >= dt) {
+            timeSinceLastUpdate -= dt;
 
             while (const std::optional event = window.pollEvent()) {
                 if (event->is<sf::Event::Closed>()) window.close();
             }
+
+            
         }
 
         window.clear();
