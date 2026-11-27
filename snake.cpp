@@ -105,7 +105,7 @@ int main() {
     appleSquare.setFillColor(appleColor);
 
     // time
-    constexpr sf::Time dt = sf::seconds(1.f / 5.f);
+    constexpr sf::Time dt = sf::seconds(1.f / 7.f);
 
     sf::Clock clock;
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
